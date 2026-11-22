@@ -9,15 +9,13 @@ class CombinatorExpression():
     def convert_to_list(self, input_string: str):
         stack = [[]]
         for char in input_string:
-            if char == "K" or char == "S" or char == "I":
-                stack[-1].append(char)
-            elif char == "(":
+            if char == "(":
                 stack.append([])
             elif char == ")":
                 subparenthesis_expression = stack.pop()
                 stack[-1].append(subparenthesis_expression)
-            else:
-                raise ValueError(f"We did not recognize a character in your expression: character is '{char}'")
+            else :
+                stack[-1].append(char)
         
         return stack[0]
     

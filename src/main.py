@@ -11,7 +11,7 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-e", "--expression", help="Evaluate the reduction of a particular expression: make sure to input as \"expression\"")
     group.add_argument("-p", "--path", help="Evaluate the reduction of a text file line by line as expressions")
-    group.add_argument("-i", "--input", action="store_true", help="Evaluate on one input.")
+    group.add_argument("-i", "--input", action="store_true", help="Evaluate on inputs in an interactive mode.")
     args = parser.parse_args()
     
     if args.expression:
