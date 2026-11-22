@@ -63,8 +63,10 @@ class CombinatorExpression():
                     return True
     
     def fully_reduce(self):
+        i = 1
         while (self.reduce(self.expression)):
-            pass
+            print(f"{i}. {self.expression}")
+            i+=1
 
         return self.expression
         

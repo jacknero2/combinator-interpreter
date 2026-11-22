@@ -48,7 +48,6 @@ def main():
                 print(f"{i}.")
                 print()
                 line = line.strip()
-                print(line)
                 expression = CombinatorExpression(line)
                 expression.fully_reduce()
                 print(expression)
