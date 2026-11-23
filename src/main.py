@@ -12,16 +12,26 @@ def main():
     group.add_argument("-e", "--expression", help="Evaluate the reduction of a particular expression: make sure to input as \"expression\"")
     group.add_argument("-p", "--path", help="Evaluate the reduction of a text file line by line as expressions")
     group.add_argument("-i", "--input", action="store_true", help="Evaluate on inputs in an interactive mode.")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Show steps of calculations.")
+    parser.add_argument("-b", "--bracketr", action="store_true", help="Bracket reduction")
     args = parser.parse_args()
     
     if args.expression:
-        expression = CombinatorExpression(str(args.expression))
-        print(expression.fully_reduce())
+        expression = CombinatorExpression(str(args.expression), args.verbose)
+        expression.fully_reduce()
+        if args.bracketr:
+            expression.reduce_bracket_abstract()
+        expression.flatten()
+        print(expression)
     elif args.input:
         while True:
             try:
-                expression = CombinatorExpression(input("> ").strip().upper())
-                print(expression.fully_reduce())
+                expression = CombinatorExpression(input("> ").strip(), args.verbose)
+                expression.fully_reduce()
+                if args.bracketr:
+                    expression.reduce_bracket_abstract()
+                expression.flatten()
+                print(expression)
             except ValueError:
                 print("Try again. We didn't understand you input.")
             except (KeyboardInterrupt, EOFError):
@@ -48,8 +58,11 @@ def main():
                 print(f"{i}.")
                 print()
                 line = line.strip()
-                expression = CombinatorExpression(line)
+                expression = CombinatorExpression(line, args.verbose)
                 expression.fully_reduce()
+                if args.bracketr:
+                    expression.reduce_bracket_abstract()
+                expression.flatten()
                 print(expression)
                 print()
                 i+=1
