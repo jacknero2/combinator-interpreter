@@ -7,7 +7,7 @@ Purpose of the Application
 
 Usage Information
 
-    usage: main.py [-h] (-e EXPRESSION | -p PATH | -i)
+    usage: main.py [-h] (-e EXPRESSION | -p PATH | -i) [-v] [-b]
 
     options:
     -h, --help            show this help message and exit
@@ -15,6 +15,8 @@ Usage Information
                             Evaluate the reduction of a particular expression: make sure to input as "expression"
     -p, --path PATH       Evaluate the reduction of a text file line by line as expressions
     -i, --input           Evaluate on inputs in an interactive mode.
+    -v, --verbose         Show steps of calculations.
+    -b, --bracketr        Bracket reduction
 
 Note:
     
